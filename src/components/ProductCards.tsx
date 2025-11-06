@@ -73,35 +73,33 @@ export const ProductCards = () => {
           {products.map((product, index) => (
             <Card 
               key={index}
-              className={`glass-card border-0 overflow-hidden hover:scale-[1.02] transition-all duration-300 fade-in-up`}
+              className="glass-card border-0 overflow-hidden hover:scale-[1.02] transition-all duration-300 fade-in-up flex flex-col"
               style={{ animationDelay: `${index * 0.15}s` }}
             >
-              <CardContent className="p-8 space-y-6">
-                <div className={`w-16 h-16 rounded-2xl ${product.iconBg} flex items-center justify-center`}>
+              <CardContent className="p-8 space-y-6 flex flex-col h-full">
+                <div className={`w-16 h-16 rounded-2xl ${product.iconBg} flex items-center justify-center flex-shrink-0`}>
                   <product.icon className={`h-8 w-8 ${product.iconColor}`} />
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2 flex-shrink-0">
                   <h3 className="text-2xl font-bold">{product.title}</h3>
                   <p className="text-sm tamil-text text-muted-foreground">{product.titleTamil}</p>
                 </div>
 
-                <ul className="space-y-3">
+                <ul className="space-y-3 flex-grow">
                   {product.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground">{feature}</span>
+                    <li key={idx} className="flex items-start gap-3">
+                      <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground leading-relaxed">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
                 <Button 
                   variant="outline" 
-                  className="w-full group border-2 hover:border-primary hover:bg-primary hover:text-primary-foreground"
+                  className="w-full group border-2 hover:border-primary hover:bg-primary hover:text-primary-foreground mt-auto h-12"
                 >
                   <span>{product.cta}</span>
-                  <span className="mx-2">•</span>
-                  <span className="tamil-text">{product.ctaTamil}</span>
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </CardContent>
